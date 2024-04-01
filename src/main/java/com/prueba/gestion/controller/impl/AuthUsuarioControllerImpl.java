@@ -14,6 +14,7 @@ import com.prueba.gestion.controller.AuthUsuarioController;
 import com.prueba.gestion.dto.AuthResponse;
 import com.prueba.gestion.dto.LoginRequest;
 import com.prueba.gestion.dto.UserDTO;
+import com.prueba.gestion.entity.User;
 import com.prueba.gestion.service.AuthService;
 import com.prueba.gestion.service.GestionUsuarioService;
 import com.prueba.gestion.service.impl.GestionUsuarioServiceImpl;
@@ -42,10 +43,9 @@ public class AuthUsuarioControllerImpl implements AuthUsuarioController {
 	@Override
 	@PostMapping("/")
 	@ApiOperation(value = "Guarda un usuario", notes = "Guarda una usuario")
-	public ResponseEntity<Void> guardarUsuario(@RequestBody UserDTO user) {
-		log.info(String.format(LOG_START, "listarEstilosMusicales()"));
-		gestionUsuarioService.guardarUsuario(user);
+	public ResponseEntity<User> guardarUsuario(@RequestBody UserDTO user) {
+		log.info(String.format(LOG_START, "guardarUsuario()"));
 
-		return ResponseEntity.ok().build();
+		return ResponseEntity.ok(gestionUsuarioService.guardarUsuario(user));
 	}
 }

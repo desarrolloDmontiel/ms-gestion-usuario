@@ -2,6 +2,7 @@ package com.prueba.gestion.service;
 
 import java.util.List;
 import com.prueba.gestion.dto.UserDTO;
+import com.prueba.gestion.entity.User;
 
 
 public interface GestionUsuarioService {
@@ -9,7 +10,7 @@ public interface GestionUsuarioService {
 	 * 
 	 * @param UserDTO user
 	 */
-	void guardarUsuario(UserDTO user);
+	User guardarUsuario(UserDTO user);
 	
 	/**
 	 * 

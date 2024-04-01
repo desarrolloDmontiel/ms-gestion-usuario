@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.prueba.gestion.enums.Role;
 
 import jakarta.persistence.CascadeType;
@@ -26,6 +28,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "users")
+@JsonIgnoreProperties(value = { 
+	    "accountNonExpired", "accountNonLocked", "credentialsNonExpired", "enabled", "authorities", "username"
+	})
 public class User implements UserDetails {
 
     @Id
@@ -42,30 +47,41 @@ public class User implements UserDetails {
     
     private LocalDateTime modified;
     
-    private LocalDateTime last_login;
+    private LocalDateTime lastLogin;
     
     private boolean isActive;
+    
+    private String token;
     
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> phones;
-	
+    
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
        return true;
     }
+    
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
        return true;
     }
+    
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
+    
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;
     }
+    
+    @JsonIgnore
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
