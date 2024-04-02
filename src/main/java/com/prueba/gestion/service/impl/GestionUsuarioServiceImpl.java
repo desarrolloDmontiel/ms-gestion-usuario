@@ -57,8 +57,8 @@ public class GestionUsuarioServiceImpl implements GestionUsuarioService {
 		user.setPhones(userDto.getPhones().stream().map(phoneDTO -> {
 			Phone phone = new Phone();
 			phone.setNumber(phoneDTO.getNumber());
-			phone.setCitycode(phoneDTO.getCityCode());
-			phone.setCountrycode(phoneDTO.getContryCode());
+			phone.setCitycode(phoneDTO.getCitycode());
+			phone.setCountrycode(phoneDTO.getContrycode());
 			phone.setUser(user);
 			return phone;
 		}).collect(Collectors.toList()));

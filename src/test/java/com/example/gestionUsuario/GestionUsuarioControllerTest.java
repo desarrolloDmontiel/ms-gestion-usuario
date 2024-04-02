@@ -24,7 +24,7 @@ import com.prueba.gestion.dto.UserDTO;
 import com.prueba.gestion.service.GestionUsuarioService;
 
 @ExtendWith(MockitoExtension.class)
-class GestionUsuarioControllerImplTest {
+class GestionUsuarioControllerTest {
 
     @Mock
     private GestionUsuarioService gestionUsuarioService;

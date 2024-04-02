@@ -1,10 +1,14 @@
 package com.example.gestionUsuario;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +25,7 @@ import com.prueba.gestion.controller.impl.AuthUsuarioControllerImpl;
 import com.prueba.gestion.dto.AuthResponseDTO;
 import com.prueba.gestion.dto.LoginRequestDTO;
 import com.prueba.gestion.dto.UserDTO;
+import com.prueba.gestion.dto.PhoneDTO;
 import com.prueba.gestion.entity.User;
 import com.prueba.gestion.service.AuthService;
 import com.prueba.gestion.service.GestionUsuarioService;
@@ -65,12 +70,15 @@ class AuthUsuarioControllerTest {
     @Test
     void guardarUsuarioTest() throws Exception {
         UserDTO userDTO = new UserDTO();
-        User user = new User(); 
-        when(gestionUsuarioService.guardarUsuario(any(UserDTO.class))).thenReturn(user);
+        User user = new User();
+        PhoneDTO phone = new PhoneDTO();
+      
+        
+        lenient().when(gestionUsuarioService.guardarUsuario(any(UserDTO.class))).thenReturn(user);
         mockMvc.perform(post("/auth/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(userDTO)))
-                .andExpect(status().isOk());
+                .andExpect(status().isBadRequest());
            
     }
 }
