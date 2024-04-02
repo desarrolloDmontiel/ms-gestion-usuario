@@ -51,6 +51,15 @@ http://localhost:8080/swagger-ui/index.html
 ```
 ![image](https://github.com/desarrolloDmontiel/ms-gestion-usuario/assets/165534025/74844156-b968-4fc3-8118-12bb02e12ac9)
 
+## Test unitarios
+Este componente tiene test unitario a nivel de controlador solamente, estos estan en las clases:
+```sh
+-AuthUsuarioControllerTest
+-GestionUsuarioControllerTest
+-
+```
+![image](https://github.com/desarrolloDmontiel/ms-gestion-usuario/assets/165534025/7bdebb36-7d5d-40ba-bd71-6e429a2826c7)
+
 
 ## Endpoints
 
