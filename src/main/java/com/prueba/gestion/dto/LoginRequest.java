@@ -1,6 +1,8 @@
 package com.prueba.gestion.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,8 +18,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequest {
-	
-	@NotEmpty(message = "mail no debe ir vacio")
+	@JsonIgnore
+	String username;
+	@NotEmpty(message = "no debe ir vacio")
     String email;
     String password;
 }

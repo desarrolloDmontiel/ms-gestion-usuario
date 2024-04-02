@@ -6,13 +6,11 @@ import static com.prueba.gestion.util.ConstantUtil.LOG_START;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,6 +21,7 @@ import com.prueba.gestion.dto.PhoneDTO;
 import com.prueba.gestion.dto.UserDTO;
 import com.prueba.gestion.entity.Phone;
 import com.prueba.gestion.entity.User;
+import com.prueba.gestion.enums.Role;
 import com.prueba.gestion.repository.UserRepository;
 import com.prueba.gestion.service.AuthService;
 import com.prueba.gestion.service.GestionUsuarioService;
@@ -42,7 +41,6 @@ public class GestionUsuarioServiceImpl implements GestionUsuarioService {
 	public User guardarUsuario(UserDTO userDto) {
 		log.info(String.format(LOG_START, "guardarUsuario"));
 
-		log.info("user es ", userRepository.findByEmail(userDto.getEmail()));
 		if (!userRepository.findByEmail(userDto.getEmail()).isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, ERROR_REGISTRO);
 		}
@@ -54,7 +52,8 @@ public class GestionUsuarioServiceImpl implements GestionUsuarioService {
 		user.setCreated(LocalDateTime.now());
 		user.setLastLogin(LocalDateTime.now());
 		user.setModified(LocalDateTime.now());
-
+		user.setRole(Role.USER);
+		
 		user.setPhones(userDto.getPhones().stream().map(phoneDTO -> {
 			Phone phone = new Phone();
 			phone.setNumber(phoneDTO.getNumber());
@@ -67,6 +66,7 @@ public class GestionUsuarioServiceImpl implements GestionUsuarioService {
 		userRepository.save(user);
 		
 		LoginRequest request = new LoginRequest();
+		request.setUsername(user.getEmail());
 		request.setEmail(user.getEmail());
 		request.setPassword(userDto.getPassword());
 		AuthResponse token = authService.login(request);

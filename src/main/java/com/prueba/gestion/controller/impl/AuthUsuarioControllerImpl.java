@@ -20,6 +20,7 @@ import com.prueba.gestion.service.GestionUsuarioService;
 import com.prueba.gestion.service.impl.GestionUsuarioServiceImpl;
 
 import io.swagger.annotations.ApiOperation;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
@@ -36,7 +37,9 @@ public class AuthUsuarioControllerImpl implements AuthUsuarioController {
 	}
 
 	@PostMapping(value = "login")
-	public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+	public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+		String username = request.getEmail();
+		request.setUsername(username);
 		return ResponseEntity.ok(authService.login(request));
 	}
 
