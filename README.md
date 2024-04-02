@@ -2,7 +2,13 @@
 
 
 
-Este es un microservicio que permite el manejo de datos en relacion al registro de una encuesta.
+Este es un microservicio que permite el registro e incio de sesión, asi como el listado de los usuarios existentes.
+Para poder acceder a listado de usuarios, es necesario en primera instancia registrarse como usuario. El registro otorgara un token
+de acceso que permitira acceder al endpoint protegido, la solución se explica en el siguiente diagrama:
+
+![image](https://github.com/desarrolloDmontiel/ms-gestion-usuario/assets/165534025/4026a6c6-7981-4608-9ab6-c7a27ae734a8)
+
+
 
 ## Requisitos
 
