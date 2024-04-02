@@ -14,6 +14,7 @@ de acceso que permitira acceder al endpoint protegido, la solución se explica e
 
 - Java 17
 - Maven
+- Lombok
 
 ## Construcción
 
@@ -27,6 +28,29 @@ mvn clean install
 Este deberia iniciar en el puerto 8080.
 
 EL proyecto utiliza una BD H2 por lo que no es necesario hacer nada mas.
+
+## H2 Console
+Luego de inciar el componente es posible ingresar a la interfaz de H2 para poder monitorear el registro de los datos,
+para ingresar debemos dirigirnos a la siguiente ruta e ingresar con las credenciales expuestas:
+
+```sh
+http://localhost:8080/h2-console/
+username=user
+password=pass
+```
+![image](https://github.com/desarrolloDmontiel/ms-gestion-usuario/assets/165534025/446db5e1-f4c5-4374-9209-9bd6ef77ca15)
+
+
+
+## Swagger
+Este componente tiene configurado un Swagger que permitira la ejecución de los endpoints disponibles,
+para acceder debemos diriginos a la siguiente ruta:
+
+```sh
+http://localhost:8080/swagger-ui/index.html
+```
+![image](https://github.com/desarrolloDmontiel/ms-gestion-usuario/assets/165534025/74844156-b968-4fc3-8118-12bb02e12ac9)
+
 
 ## Endpoints
 
