@@ -1,12 +1,12 @@
 package com.prueba.gestion.service;
 
-import com.prueba.gestion.dto.AuthResponse;
-import com.prueba.gestion.dto.LoginRequest;
+import com.prueba.gestion.dto.AuthResponseDTO;
+import com.prueba.gestion.dto.LoginRequestDTO;
 
 
 
 public interface AuthService {
 
-    public AuthResponse login(LoginRequest request);
+    public AuthResponseDTO login(LoginRequestDTO request);
 
 }

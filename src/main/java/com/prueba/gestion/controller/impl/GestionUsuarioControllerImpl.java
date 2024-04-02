@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.prueba.gestion.controller.GestionUsuarioController;
 import com.prueba.gestion.dto.UserDTO;
@@ -34,7 +35,7 @@ public class GestionUsuarioControllerImpl implements GestionUsuarioController {
 	@Override
 	@GetMapping("/")
 	@ApiOperation(value = "Lista todos los usuarios", notes = "Lista todos los usuarios")
-	public ResponseEntity<List<UserDTO>> listarUsuarios() {
+	public ResponseEntity<List<UserDTO>> listarUsuarios() throws ResponseStatusException {
 		log.info(String.format(LOG_START, "listarUsuarios()"));
 
 		List<UserDTO> response = gestionUsuarioService.listarUsuarios();

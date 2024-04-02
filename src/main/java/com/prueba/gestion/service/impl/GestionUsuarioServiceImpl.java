@@ -15,8 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.prueba.gestion.dto.AuthResponse;
-import com.prueba.gestion.dto.LoginRequest;
+import com.prueba.gestion.dto.AuthResponseDTO;
+import com.prueba.gestion.dto.LoginRequestDTO;
 import com.prueba.gestion.dto.PhoneDTO;
 import com.prueba.gestion.dto.UserDTO;
 import com.prueba.gestion.entity.Phone;
@@ -38,7 +38,7 @@ public class GestionUsuarioServiceImpl implements GestionUsuarioService {
 	private final PasswordEncoder passwordEncoder;
 
 	@Override
-	public User guardarUsuario(UserDTO userDto) {
+	public User guardarUsuario(UserDTO userDto) throws ResponseStatusException{
 		log.info(String.format(LOG_START, "guardarUsuario"));
 
 		if (!userRepository.findByEmail(userDto.getEmail()).isEmpty()) {
@@ -65,11 +65,11 @@ public class GestionUsuarioServiceImpl implements GestionUsuarioService {
 
 		userRepository.save(user);
 		
-		LoginRequest request = new LoginRequest();
+		LoginRequestDTO request = new LoginRequestDTO();
 		request.setUsername(user.getEmail());
 		request.setEmail(user.getEmail());
 		request.setPassword(userDto.getPassword());
-		AuthResponse token = authService.login(request);
+		AuthResponseDTO token = authService.login(request);
 		
 		user.setToken(token.getToken());
 		userRepository.save(user);

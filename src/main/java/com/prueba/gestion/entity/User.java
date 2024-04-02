@@ -43,7 +43,8 @@ public class User implements UserDetails {
 	private String name;
 
 	private String email;
-
+	
+	@JsonIgnore
 	private String password;
 
 	private LocalDateTime created;

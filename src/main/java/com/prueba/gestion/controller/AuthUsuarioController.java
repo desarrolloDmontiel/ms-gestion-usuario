@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.prueba.gestion.dto.AuthResponse;
-import com.prueba.gestion.dto.LoginRequest;
+import com.prueba.gestion.dto.AuthResponseDTO;
+import com.prueba.gestion.dto.LoginRequestDTO;
 import com.prueba.gestion.dto.UserDTO;
 import com.prueba.gestion.entity.User;
 
@@ -22,7 +22,7 @@ public interface AuthUsuarioController {
 	 */
 	@ApiOperation(value = "", notes = "")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successful return") })
-	public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request);
+	public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginRequestDTO request);
 	
 	/**
 	 * 

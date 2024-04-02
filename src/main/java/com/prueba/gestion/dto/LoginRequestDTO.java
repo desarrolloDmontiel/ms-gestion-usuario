@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
+public class LoginRequestDTO {
 	@JsonIgnore
 	String username;
 	@NotEmpty(message = "no debe ir vacio")
