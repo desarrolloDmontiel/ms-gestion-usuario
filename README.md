@@ -113,7 +113,22 @@ Response:
 }
 
 ```
+Para login:
+[POST] localhost:8080/auth/login
 
+Request:
+```sh
+{
+"email":"juan@rodriguez.org",
+"password":"hunter2"
+}
+```
+Response:
+```sh
+{
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWFuQHJvZHJpZ3Vlei5vcmciLCJpYXQiOjE3MTIwODAzNjUsImV4cCI6MTcxMjA4MTgwNX0.bycOUjPfis0PqxPGQoeq2Ea16X-_zYXOfySo0xYmvWY"
+}
+```
 Para listar todos los usuarios:
 
 [GET] localhost:8080/users/
