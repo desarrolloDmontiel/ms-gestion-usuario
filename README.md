@@ -88,7 +88,23 @@ Response:
 
 ```sh
  positivo --> Status 200
-
+{
+    "id": "5be418a8-ed3c-4a67-99b8-30b7ab3bd9b2",
+    "name": "Juan Rodriguez",
+    "email": "juan@rodriguez.org",
+    "created": "2024-04-02T14:55:12.5315971",
+    "modified": "2024-04-02T14:55:12.5315971",
+    "lastLogin": "2024-04-02T14:55:12.5315971",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWFuQHJvZHJpZ3Vlei5vcmciLCJpYXQiOjE3MTIwODA1MTIsImV4cCI6MTcxMjA4MTk1Mn0.v7HBFnSj__ep6dMpf5jihbuoHxN0MmUM453A8_WyI60",
+    "phones": [
+        {
+            "number": "1234567",
+            "citycode": "1",
+            "countrycode": "57"
+        }
+    ],
+    "active": true
+}
 
  error --> 
 
